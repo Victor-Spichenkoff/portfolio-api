@@ -1,6 +1,17 @@
 module.exports = (app:any) => {
+    app.post('/login', app.api.auth.login)
+    app.post('/user', app.api.user.createUser)
+    app.post('/validateToken', app.api.auth.validateToken)
+    app.post('/guest', app.api.auth.loginGuest)
+
+
+    //só com autorização
+    app.use(app.config.passport.authenticate())
+
+
+
     app.route('/user')
-        .post(app.api.user.createUser)
+        // .post(app.api.user.createUser)
         .get(app.api.user.getAll)
 
     app.route('/user/:id')

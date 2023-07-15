@@ -505,6 +505,11 @@ jws@^3.2.2:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
 
+jwt-simple@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.npmjs.org/jwt-simple/-/jwt-simple-0.5.6.tgz"
+  integrity sha512-40aUybvhH9t2h71ncA1/1SbtTNCVZHgsTsTgqPUxGWDmUDrXyDf2wMNQKEbdBjbf4AI+fQhbECNTV6lWxQKUzg==
+
 jwt@0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/jwt/-/jwt-0.2.0.tgz"
