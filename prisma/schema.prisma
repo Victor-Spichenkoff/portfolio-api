@@ -18,5 +18,20 @@ model User {
   password String
   bio String?
 
+  projects Project[]
+
   @@map("users")
+}
+
+model Project {
+  id String @unique @id @default(uuid())
+  name String
+  description String
+  link String
+  imageUrl String?
+  likes Int @default(0)
+  user   User @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("projects")
 }

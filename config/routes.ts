@@ -18,6 +18,12 @@ module.exports = (app:any) => {
         .get(app.api.user.getById)
         .delete(app.api.user.remove)
 
+    app.route('/project')
+        .post(app.api.project.createProject)
+        
+    app.route('/project/:id')
+        .get(app.api.project.getProjects)
+    
     app.use((req:any, res:any)=> {
         res.status(404).send('Serviço não encontrado')
     })
