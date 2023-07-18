@@ -23,6 +23,8 @@ module.exports = (app:any) => {
         
     app.route('/project/:id')
         .get(app.api.project.getProjects)
+
+    app.get('/project/fy/:id', app.api.project.getFy)
     
     app.use((req:any, res:any)=> {
         res.status(404).send('Serviço não encontrado')

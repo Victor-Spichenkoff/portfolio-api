@@ -34,7 +34,8 @@ module.exports = (app:any) => {
             contact: user.contact,
             bio: user.bio,
             iat: now,
-            exp: now + (60 * 60 * 24 * 30)//3 dias(30 dias para teste)
+            exp: now + (60*60*10)
+            // exp: now + (60 * 60 * 24 * 30)//3 dias(30 dias para teste)
         }
 
         res.json({
