@@ -19,10 +19,10 @@ module.exports = (app:any) => {
         //     data: {...project}
         // })
 
-        if(false/*affected*/) {
+        if(/*affected*/true) {
             return res.send({status:201})
         } else {
-            return res.send({status:500, mensage: 'Error in the server'})
+            return res.send({status:400, mensage: 'Link already used'})
         }
     }
 
