@@ -116,9 +116,12 @@ module.exports = (app:any) => {
 
 //PARA TESTES
 // {
+//     "id": "8e232930-4da0-4197-a376-058ed697fa6c",
 //     "name": "Victor",
-//     "password": "12345",
-//     "confirmPassword": "12345",
-//     "contact": "98765-4321"
-//     //id=1c69073c-a6b2-4bb8-9034-7e786cd874cc
+//     "contact": "987654321",
+//     "bio": null,
+//     "iat": 1689792684,
+//     "exp": 1692384684,
+//     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjhlMjMyOTMwLTRkYTAtNDE5Ny1hMzc2LTA1OGVkNjk3ZmE2YyIsIm5hbWUiOiJWaWN0b3IiLCJjb250YWN0IjoiOTg3NjU0MzIxIiwiYmlvIjpudWxsLCJpYXQiOjE2ODk3OTI2ODQsImV4cCI6MTY5MjM4NDY4NH0.g9zitJRCa2Fowlgz6dogX3keHEqVS9XO4ueK-97ZG9E",
+//     "status": 200
 // }

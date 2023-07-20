@@ -5,7 +5,7 @@ module.exports = (app:any) => {
     const {exists, equals} = require('./validation')
 
     async function createProject(req:any, res:any) {
-       const project = {...req.body} 
+       const project = {...req.body}
        try{
             exists(project.name , 'Inform your project name')
             exists(project.link , 'Inform a link to acess the project')
@@ -15,15 +15,20 @@ module.exports = (app:any) => {
             return res.send({status:400, mensage: e})
        }
 
-        // const affected = await prisma.project.create({
-        //     data: {...project}
-        // })
-
-        if(/*affected*/true) {
-            return res.send({status:201})
-        } else {
+       try{
+           const affected = await prisma.project.create({
+               data: {...project}
+           })
+           
+           if(affected) {
+               return res.send({status:204})
+           } else {
+               return res.send({status:500, mensage: 'Server error'})
+           }
+       } catch(e) {
             return res.send({status:400, mensage: 'Link already used'})
-        }
+       }
+
     }
 
     async function getProjects(req:any, res:any) {
@@ -56,6 +61,39 @@ module.exports = (app:any) => {
         res.send(projects)
     }
 
-    return { createProject, getProjects, getFy }
+
+    async function remove(req:any, res:any) {
+        const projectId = req.params.id ?? req.body.id
+
+        const affected = await prisma.project.delete({
+            where: {id:projectId}
+        })
+
+        if(affected) {
+            res.send({ status: 204 })
+        } else {
+            res.send({status: 500, mensage: "Can't delete"})
+        }
+    }
+
+
+    async function update(req:any, res:any) {
+        const projectId = req.params.id ?? req.body.id
+        console.log(req.params.id, req.body)
+        try {
+            prisma.projects.update({
+                where: {id:projectId},
+                data: {...req.body}
+            })
+
+            return res.send({status:204})
+        } catch(e) {
+            console.log('Erro Update Projects: '+ e)
+            return res.send({status:500, mensage: "Server Error"})
+        }
+    } 
+
+
+    return { createProject, getProjects, getFy, remove, update }
 }
 export {}

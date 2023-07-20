@@ -23,6 +23,8 @@ module.exports = (app:any) => {
         
     app.route('/project/:id')
         .get(app.api.project.getProjects)
+        .delete(app.api.project.remove)
+        .post(app.api.project.update)
 
     app.get('/project/fy/:id', app.api.project.getFy)
     
