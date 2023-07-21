@@ -1,6 +1,8 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
+
+
 module.exports = (app:any) => {
     const {exists, equals} = require('./validation')
 
@@ -36,7 +38,7 @@ module.exports = (app:any) => {
         try{
             const projects = await prisma.user.findFirst({
                 where: {id: userId},
-                include: {projets: true}
+                select: {projets:true}
                 // include: {projects: true}//colocar o 'c' de volta 
             })
 
@@ -51,14 +53,22 @@ module.exports = (app:any) => {
     async function getFy(req:any, res:any) {
         const currentUserId = req.params.id
 
-        let page = req.body.page
-        let limit = 10
+        let page = req.query.page?? 0
+        let limit = 3
 
         const projects = await prisma.project.findMany({
-            where: {user_id: currentUserId}
+            take: limit,
+            skip: page*limit,
+            where: {user_id: {not: currentUserId}},
+            orderBy: {likes: 'desc'},
+            include: { user: {select: {name:true, contact:true}}}
         })
 
-        res.send(projects)
+        if(projects.length==0) {
+            return res.send('End')
+        }
+
+        return res.send(projects)
     }
 
 
@@ -80,12 +90,15 @@ module.exports = (app:any) => {
     async function update(req:any, res:any) {
         const projectId = req.params.id ?? req.body.id
         console.log(req.params.id, req.body)
+
+
         try {
-            prisma.projects.update({
+            const affected = await prisma.project.update({
                 where: {id:projectId},
                 data: {...req.body}
             })
 
+            
             return res.send({status:204})
         } catch(e) {
             console.log('Erro Update Projects: '+ e)
@@ -97,3 +110,20 @@ module.exports = (app:any) => {
     return { createProject, getProjects, getFy, remove, update }
 }
 export {}
+
+//FY
+[
+    {
+        "id": "f16ca335-4410-4bf9-b3c2-22eeb3fbe3f8",
+        "name": "Teste Yudi",
+        "description": "<p>Testando em outro user&nbsp;</p><p><strong>Editado:&nbsp;</strong>Emma toma&nbsp;<br></p>",
+        "link": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk0WGZM-RPg1n0ey4p_HRRIp0mR91MfitbXOHKN49f4khCXpvl4O4VZRe6mNtBxVGcVNo&usqp=CAU",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?         q=tbn:ANd9GcQk0WGZM-RPg1n0ey4p_HRRIp0mR91MfitbXOHKN49f4khCXpvl4O4VZRe6mNtBxVGcVNo&usqp=CAU",
+        "likes": 0,
+        "user_id": "5b1f1fbf-9ac2-4906-aed7-b50bdfd79e84",
+        "user": {
+            "name": "Yudi",
+            "contact": "987654322"
+        }
+    }
+]
