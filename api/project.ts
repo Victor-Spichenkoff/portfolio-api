@@ -50,25 +50,36 @@ module.exports = (app:any) => {
     }
 
 
+    let vez = 0
     async function getFy(req:any, res:any) {
         const currentUserId = req.params.id
 
         let page = req.query.page?? 0
-        let limit = 3
+        let limit = 4
+        try{
+            const projects = await prisma.project.findMany({
+                take: limit,
+                skip: page * limit,
+                where: {user_id: {not: currentUserId}},
+                orderBy: {likes: 'desc'},
+                // select: { id: true, name:true, likes:true, imageUrl:true, user: {select: {name:true, contact:true}}}
+                include: { user: {name:true, contact:true} }
+            })
+    
+            if(projects.length==0) {
+                // //TESTE DE PAGINACAO
+                return res.send([
+                    {name:`nhe${vez++}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
+                ])
 
-        const projects = await prisma.project.findMany({
-            take: limit,
-            skip: page*limit,
-            where: {user_id: {not: currentUserId}},
-            orderBy: {likes: 'desc'},
-            include: { user: {select: {name:true, contact:true}}}
-        })
-
-        if(projects.length==0) {
-            return res.send('End')
+                //NORMAL:
+                return res.send([])
+            }
+            console.log(projects)
+            return res.send(projects)
+        } catch(e) {
+            res.status(500)
         }
-
-        return res.send(projects)
     }
 
 
