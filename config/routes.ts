@@ -28,6 +28,10 @@ module.exports = (app:any) => {
 
     app.get('/project/fy/:id', app.api.project.getFy)
     
+    app.get('/project/view/:id', app.api.project.getFullProject)
+    
+    app.post('/like', app.api.project.increaseLikes)
+
     app.use((req:any, res:any)=> {
         res.status(404).send('Serviço não encontrado')
     })

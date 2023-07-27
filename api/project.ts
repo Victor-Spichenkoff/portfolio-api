@@ -62,20 +62,20 @@ module.exports = (app:any) => {
                 skip: page * limit,
                 where: {user_id: {not: currentUserId}},
                 orderBy: {likes: 'desc'},
-                // select: { id: true, name:true, likes:true, imageUrl:true, user: {select: {name:true, contact:true}}}
-                include: { user: {name:true, contact:true} }
+                select: { id: true, name:true, likes:true, imageUrl:true, user: {select: {id: true, name:true, contact:true}}}
+                // include: { user: {name:true, contact:true} }
             })
     
             if(projects.length==0) {
                 // //TESTE DE PAGINACAO
-                return res.send([
-                    {name:`nhe${vez++}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
-                ])
+                // return res.send([
+                //     { id: 'nulll',name:`nhe${vez++}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
+                // ])
 
                 //NORMAL:
                 return res.send([])
             }
-            console.log(projects)
+            
             return res.send(projects)
         } catch(e) {
             res.status(500)
@@ -94,6 +94,22 @@ module.exports = (app:any) => {
             res.send({ status: 204 })
         } else {
             res.send({status: 500, mensage: "Can't delete"})
+        }
+    }
+
+
+    async function getFullProject(req:any, res:any) {
+        const id = req.params.id
+
+        const project = await prisma.project.findFirst({
+            where: {id},
+            include: { user: {select: {id: true, name:true, contact:true} } }
+        })        
+
+        if(project) {
+            res.send(project)
+        } else {
+            res.status(500)
         }
     }
 
@@ -118,7 +134,24 @@ module.exports = (app:any) => {
     } 
 
 
-    return { createProject, getProjects, getFy, remove, update }
+    async function increaseLikes (req:any, res:any) {
+        const id = req.body.id
+        const currentLikes = req.body.currentLikes
+        await prisma.project.update({
+            where: {id},
+            data: {
+                likes: {
+                    increment: 1
+                }
+            }
+        })
+
+        res.send({likes: currentLikes+1})
+    }
+
+
+
+    return { createProject, getProjects, getFy, remove, update, getFullProject, increaseLikes }
 }
 export {}
 
