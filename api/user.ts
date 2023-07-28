@@ -102,14 +102,28 @@ module.exports = (app:any) => {
 
 
 
+    const getProfile = async (req:any, res:any) => {
+        const id = req.params.id
+
+        const userAndProject = await prisma.user.findFirst({
+            where: {id},
+            include: { projets:true }
+        })
+
+        if(userAndProject) {
+            res.send(userAndProject)
+        } else {
+            res.status(500)
+        }
+    }
+    
+
+
+
     const r = (req:any, res:any) => {
 
     }
-
-
-
-
-    return { createUser, getById, getAll, remove } 
+    return { createUser, getById, getAll, remove, getProfile } 
 
     module.exports = {}
 }

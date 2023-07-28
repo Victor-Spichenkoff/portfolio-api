@@ -18,6 +18,8 @@ module.exports = (app:any) => {
         .get(app.api.user.getById)
         .delete(app.api.user.remove)
 
+    app.get('/profile/:id', app.api.user.getProfile)
+
     app.route('/project')
         .post(app.api.project.createProject)
         
