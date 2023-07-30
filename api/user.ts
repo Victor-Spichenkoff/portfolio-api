@@ -91,7 +91,7 @@ module.exports = (app:any) => {
             })
 
             if(affected) {
-                res.status(202)
+                res.sendStatus(202)
             } else {
                 res.status(500).send('Delete all projects of this user first')
             }
@@ -118,7 +118,7 @@ module.exports = (app:any) => {
     }
     
 
-
+    let vez = 0
 
     const updateUser = async (req:any, res:any) => {
         const user = {...req.body}
@@ -126,20 +126,22 @@ module.exports = (app:any) => {
         try{
             exists(user.name, 'Inform the Name')
             exists(user.contact, 'Inform the Contact')
-            if(user.bio == '' || user.bio == '<p></p>') throw 'Inform a bio'
+            if(user.bio == '' || user.bio == '<p></p>' || user.bio == '<p><br></p>') throw 'Inform a bio'
             exists(user.bio, 'Inform a bio')
         } catch(e) {
             return res.status(500).send(e)
         }
 
         try {
-            // delete user.id, user.password, user.
-            // await prisma.user.update({
-            //     where: {id: user.id},
-            //     data: {...user}
-            // })
-            res.status(202)
-        } catch {
+            delete user.password, user.token
+            await prisma.user.update({
+                where: {id: user.id},
+                data: {...user}
+            })
+            console.log('Sucesso '+ ++vez)
+            res.sendStatus(202)
+        } catch(e) {
+            console.log(e)
             return res.status(500).send('Name or Contact already used')
         }
     }

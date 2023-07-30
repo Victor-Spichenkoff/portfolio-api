@@ -68,12 +68,12 @@ module.exports = (app:any) => {
     
             if(projects.length==0) {
                 // //TESTE DE PAGINACAO
-                // return res.send([
-                //     { id: 'nulll',name:`nhe${vez++}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
-                // ])
+                return res.send([
+                    { id: 'nulll',name:`nhe${vez++}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
+                ])
 
                 //NORMAL:
-                return res.send([])
+                // return res.send([])
             }
             
             return res.send(projects)
