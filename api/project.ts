@@ -30,9 +30,9 @@ module.exports = (app:any) => {
        } catch(e) {
             return res.send({status:400, mensage: 'Link already used'})
        }
-
     }
 
+    
     async function getProjects(req:any, res:any) {
         const userId = req.params.id || req.body.id
         try{

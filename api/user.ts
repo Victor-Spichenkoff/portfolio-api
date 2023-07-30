@@ -91,12 +91,12 @@ module.exports = (app:any) => {
             })
 
             if(affected) {
-                res.send('sucesso')
+                res.status(202)
             } else {
-                res.status(500).send('Não foi possível excluir')
+                res.status(500).send('Delete all projects of this user first')
             }
         } catch(e) {
-            res.status(500)
+            res.status(500).send('Delete all projects of this user first')
         }
     }
 
@@ -120,10 +120,39 @@ module.exports = (app:any) => {
 
 
 
+    const updateUser = async (req:any, res:any) => {
+        const user = {...req.body}
+
+        try{
+            exists(user.name, 'Inform the Name')
+            exists(user.contact, 'Inform the Contact')
+            if(user.bio == '' || user.bio == '<p></p>') throw 'Inform a bio'
+            exists(user.bio, 'Inform a bio')
+        } catch(e) {
+            return res.status(500).send(e)
+        }
+
+        try {
+            // delete user.id, user.password, user.
+            // await prisma.user.update({
+            //     where: {id: user.id},
+            //     data: {...user}
+            // })
+            res.status(202)
+        } catch {
+            return res.status(500).send('Name or Contact already used')
+        }
+    }
+    
+    
+    
+    
     const r = (req:any, res:any) => {
 
     }
-    return { createUser, getById, getAll, remove, getProfile } 
+
+
+    return { createUser, getById, getAll, remove, getProfile, updateUser } 
 
     module.exports = {}
 }

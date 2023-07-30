@@ -14,6 +14,8 @@ module.exports = (app:any) => {
         // .post(app.api.user.createUser)
         .get(app.api.user.getAll)
 
+    app.post('/user/update', app.api.user.updateUser)
+
     app.route('/user/:id')
         .get(app.api.user.getById)
         .delete(app.api.user.remove)
