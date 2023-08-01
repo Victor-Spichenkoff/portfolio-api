@@ -149,12 +149,47 @@ module.exports = (app:any) => {
     
     
     
+    const resetPassword = async (req:any, res:any) => {
+        const infos = {...req.body}
+        console.log(infos)
+
+        try{
+            exists(infos.name, 'Inform the Name')
+            exists(infos.password, 'Inform the new Password')
+            equals(infos.password, infos.confirmPassword, 'Invalid password confirmation')
+        } catch(e) {
+            return res.status(400).send(e)
+        }
+
+
+
+        if(infos.name == 'Victor Spichenkoff') return res.status(401).send("You are not the owner")
+
+
+
+        infos.password = encryptPassword(infos.password)
+        delete infos.confirmPassword
+
+
+
+        const affected = await prisma.user.update({
+            where: {name: infos.name},
+            data: {password: infos.password}
+        })
+
+        if(affected) return res.sendStatus(204)
+        else return res.status(500).send("Can't reset")
+
+        console.log('terminou')
+    }
+    
+    
     const r = (req:any, res:any) => {
 
     }
 
 
-    return { createUser, getById, getAll, remove, getProfile, updateUser } 
+    return { createUser, getById, getAll, remove, getProfile, updateUser, resetPassword } 
 
     module.exports = {}
 }

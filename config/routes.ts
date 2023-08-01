@@ -3,6 +3,7 @@ module.exports = (app:any) => {
     app.post('/user', app.api.user.createUser)
     app.post('/validateToken', app.api.auth.validateToken)
     app.post('/guest', app.api.auth.loginGuest)
+    app.post('/resetPassword', app.api.user.resetPassword)
 
 
     //só com autorização

@@ -66,14 +66,18 @@ module.exports = (app:any) => {
                 // include: { user: {name:true, contact:true} }
             })
     
+
             if(projects.length==0) {
                 // //TESTE DE PAGINACAO
                 return res.send([
-                    { id: 'nulll',name:`nhe${vez++}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
+                    { id: 'nulll',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}},
+                    { id: 'nulll',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}},
+                    { id: 'nulll',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}},
+                    { id: 'nulll',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
                 ])
 
                 //NORMAL:
-                // return res.send([])
+                return res.send([])
             }
             
             return res.send(projects)
