@@ -37,6 +37,7 @@
   "author": "Victor Spichenkoff Santana",
   "license": "ISC",
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm":"1.4.x"
   }
 }
