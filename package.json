@@ -9,7 +9,7 @@
     "start-pm": "pm2 start app.ts",
     "dev": "nodemon app.ts",
     "vercel-build": "npx prisma migrate deploy",
-    "build": "npm install"
+    "build": "npm i -g node-base64@0.0.1 && npm install"
   },
   "devDependencies": {
     "@types/node": "^20.4.8",
@@ -19,7 +19,6 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "node-base64": "0.0.1",
     "@prisma/client": "^4.16.2",
     "@types/node": "^20.4.8",
     "bcrypt-nodejs": "^0.0.3",
