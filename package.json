@@ -32,7 +32,7 @@
     "typescript": "^5.1.6",
     "node-gyp": "9.4.0",
     "node-base64": "0.0.1",
-    "node-waf": ""
+    "node-waf": "~1.0.0"
   },
   "keywords": [],
   "author": "Victor Spichenkoff Santana",
