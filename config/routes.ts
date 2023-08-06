@@ -5,6 +5,8 @@ module.exports = (app:any) => {
     app.post('/guest', app.api.auth.loginGuest)
     app.post('/resetPassword', app.api.user.resetPassword)
 
+    app.get('/teste', (req:any, res:any) => res.send('Funcionando'))
+
 
     //só com autorização
     app.use(app.config.passport.authenticate())
