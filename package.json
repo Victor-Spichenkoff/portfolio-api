@@ -9,7 +9,7 @@
     "start-pm": "pm2 start app.ts",
     "dev": "nodemon app.ts",
     "vercel-build": "npx prisma migrate deploy",
-    "build": ""
+    "build": "npx prisma migrate deploy"
   },
   "devDependencies": {
     "@types/node": "^20.4.8",
