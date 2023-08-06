@@ -36,7 +36,9 @@
     "pm2": "5.3.0",
     "shoe": "0.0.15",
     "rbytes": "1.1.0",
-    "sockjs": "0.3.24"
+    "sockjs": "0.3.24",
+    "nodemon": "3.0.1",
+    "prisma": "^4.16.2"
   },
   "keywords": [],
   "author": "Victor Spichenkoff Santana",
