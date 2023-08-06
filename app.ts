@@ -3,7 +3,6 @@ const app= express()
 
 // const prisma = require('./config/prisma')
 // app.prisma = {...prisma}
-var base64 = require("base64")
 
 
 const consign = require('consign')
