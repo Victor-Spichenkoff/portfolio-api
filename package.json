@@ -31,10 +31,7 @@
     "passport-jwt": "^4.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
-    "pm2": "5.3.0",
-    "shoe": "0.0.15",
-    "rbytes": "1.1.0",
-    "sockjs": "0.3.24"
+    "pm2": "5.3.0"
   },
   "keywords": [],
   "author": "Victor Spichenkoff Santana",
