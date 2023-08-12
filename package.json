@@ -8,7 +8,8 @@
     "start": "ts-node app.ts",
     "start-pm": "pm2 start app.ts",
     "dev": "nodemon app.ts",
-    "vercel-build": "npx prisma migrate deploy"
+    "vercel-build": "npx prisma migrate deploy",
+    "build": "npm install"
   },
   "devDependencies": {
     "@types/node": "^20.4.8",
