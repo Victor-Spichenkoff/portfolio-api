@@ -107,7 +107,7 @@ module.exports = (app:any) => {
 
         const userAndProject = await prisma.user.findFirst({
             where: {id},
-            include: { projets:true }
+            include: { projets: { orderBy: { likes: 'desc' } }  }
         })
 
         if(userAndProject) {

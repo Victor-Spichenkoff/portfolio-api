@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-
+const imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaByaIipBPlEyzw2lQtFkD2hODdFwanv4FR4qe0RiFwH_KiACZgSetWd97tRsl6CSN3qw&usqp=CAU'
 
 module.exports = (app:any) => {
     const {exists, equals} = require('./validation')
@@ -75,6 +75,13 @@ module.exports = (app:any) => {
                 //     { id: 'null',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}},
                 //     { id: 'null',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
                 // ])
+
+                return res.send([
+                    { id: 'null',name:`Infinite Scroll`, imageUrl:imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
+                    { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
+                    { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
+                    { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}}
+                ])
 
                 //NORMAL:
                 return res.send([])
