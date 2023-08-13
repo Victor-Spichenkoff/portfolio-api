@@ -2,12 +2,12 @@
   "name": "portfolio-api",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node app.ts",
-    "start-pm": "pm2 start app.ts",
-    "dev": "nodemon app.ts",
+    "start": "ts-node index.ts",
+    "start-pm": "pm2 start index.ts",
+    "dev": "nodemon index.ts",
     "vercel-build": "npx prisma migrate deploy",
     "build": "npm install"
   },
