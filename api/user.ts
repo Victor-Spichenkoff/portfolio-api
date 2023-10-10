@@ -163,7 +163,7 @@ module.exports = (app:any) => {
 
 
 
-        // if(infos.name == 'Victor Spichenkoff') return res.status(401).send("You are not the owner")
+        if(infos.name == 'Victor Spichenkoff') return res.status(401).send("You are not the owner")
 
 
 
@@ -205,3 +205,8 @@ module.exports = (app:any) => {
 //     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjhlMjMyOTMwLTRkYTAtNDE5Ny1hMzc2LTA1OGVkNjk3ZmE2YyIsIm5hbWUiOiJWaWN0b3IiLCJjb250YWN0IjoiOTg3NjU0MzIxIiwiYmlvIjpudWxsLCJpYXQiOjE2ODk3OTI2ODQsImV4cCI6MTY5MjM4NDY4NH0.g9zitJRCa2Fowlgz6dogX3keHEqVS9XO4ueK-97ZG9E",
 //     "status": 200
 // }
+
+
+// ++++++++++++++++  MINHA CONTA ++++++++++++++++
+//Victor Spichenkoff
+//SENHA: 12345 --> pituca11
