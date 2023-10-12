@@ -4,3 +4,4 @@ node_modules
 .env
 production.db
 prisma/production.db
+prisma/productionF.db
