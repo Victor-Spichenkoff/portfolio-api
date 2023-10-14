@@ -163,7 +163,7 @@ module.exports = (app:any) => {
 
 
 
-        // if(infos.name == 'Victor Spichenkoff') return res.status(401).send("You are not the owner")
+        if(infos.name == 'Victor Spichenkoff') return res.status(401).send("You are not the owner")
 
 
 
