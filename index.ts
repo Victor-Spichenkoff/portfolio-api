@@ -14,7 +14,7 @@ consign()
     .into(app)
 
 
-const port = process.env.PORT || 2006
+const port = process.env.PORT || 2010
 
-app.listen(port, ()=>console.log('Rodando na porta: '+port))
+app.listen(port, ()=>console.log('Rodando na porta: '+ port))
 module.exports = {}

@@ -14,7 +14,7 @@ module.exports = (app:any) => {
 
 
     app.route('/user')
-        // .post(app.api.user.createUser)
+        .post(app.api.user.createUser)
         .get(app.api.user.getAll)
 
     app.post('/user/update', app.api.user.updateUser)

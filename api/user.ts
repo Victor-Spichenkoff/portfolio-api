@@ -115,13 +115,13 @@ module.exports = (app:any) => {
         if(userAndProject) {
             res.send(userAndProject)
         } else {
-            const userAndProject = await prisma.user.findFirst({
-                where: {id},
-                include: { projets: { orderBy: { likes: 'desc' } }  }
-            })
+            // const userAndProject = await prisma.user.findFirst({
+            //     where: {id},
+            //     include: { projets: { orderBy: { likes: 'desc' } }  }
+            // })
 
-            setTimeout(()=> res.send(userAndProject), 3000)
-            // res.sendStatus(500)
+            // setTimeout(()=> res.send(userAndProject), 3000)
+            res.send(500)
         }
     }
     

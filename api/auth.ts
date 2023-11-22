@@ -8,7 +8,8 @@ const prisma = require('../config/prisma')
 
 module.exports = (app:any) => {
 
-    const login = async (req:any, res:any) => { //try{
+    const login = async (req:any, res:any) => { 
+        // try{
         if(!req.body.name || !req.body.password) {
             return res.send({status: 400, mensage: 'Inform your name and password'})
         } 
@@ -32,15 +33,18 @@ module.exports = (app:any) => {
             id: user.id,
             name: user.name,
             contact: user.contact,
-            bio: user.bio,
+            bio: user.bio, //(muito pesado)
             iat: now,
-            // exp: now + (60*60*10)//10 horas(produção)
-            exp: now + (60 * 60 * 24 * 30)//(30 dias para teste)
+            exp: now + (60*60*10)//10 horas(produção)
+            // exp: now + (60 * 60 * 24 * 30)//(30 dias para teste)
         }
+
+        const payloadWithoutBio = { ...payload }
+        delete payloadWithoutBio.bio
 
         res.json({
             ...payload,
-            token: jwt.encode(payload, authSecret),
+            token: jwt.encode(payloadWithoutBio, authSecret),
             status: 200
         })
     // }catch(e) {
