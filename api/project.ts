@@ -129,11 +129,13 @@ module.exports = (app:any) => {
         const projectId = req.params.id ?? req.body.id
         console.log(req.params.id, req.body)
 
+        const project = {...req.body}
+        delete project.likes//evitar erros
 
         try {
             const affected = await prisma.project.update({
                 where: {id:projectId},
-                data: {...req.body}
+                data: {...project}
             })
 
             
