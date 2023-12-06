@@ -2,6 +2,10 @@
 <h2>A full featured site to help you divugate your projects</h2>
 <hr>
 
+<br>
+<h3>This website is free-hosted, so you may need to fresh the page due to a slow server</h3>
+<br>
+
 <a href="https://victor-spichenkoff.github.io/portfolio/"><strong>Visit Here</strong></a>
 
 <p>Site created to connect companies and young students</p>
@@ -45,6 +49,10 @@
 <br><br>
 <h1>Portfolio</h1>
 <h2>Um site completo para ajudar você a divulgar seus projetos</h2>
+
+<br>
+<h3>Este site é hospedado gratuitamente, então pode ser necessário atualizar a página devido a um servidor lento</h3>
+<br>
 
 <a href="https://victor-spichenkoff.github.io/portfolio/"><strong>Visite aqui</strong></a>
 
