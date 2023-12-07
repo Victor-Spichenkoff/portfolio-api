@@ -130,7 +130,7 @@ module.exports = (app:any) => {
         console.log(req.params.id, req.body)
 
         const project = {...req.body}
-        delete project.likes//evitar erros
+        if (project.likes) delete project.likes//evitar erros
 
         try {
             const affected = await prisma.project.update({
