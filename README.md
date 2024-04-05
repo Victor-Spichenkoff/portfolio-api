@@ -6,7 +6,7 @@
 <h3>This website is free-hosted, so you may need to fresh the page due to a slow server</h3>
 <br>
 
-<a href="https://victor-spichenkoff.github.io/portfolio/"><strong>Visit Here</strong></a>
+<a href="https://victor-spichenkoff.github.io/portfolio/auth"><strong>Visit Here</strong></a>
 
 <p>Site created to connect companies and young students</p>
 <p>Features:</p>
@@ -54,7 +54,7 @@
 <h3>Este site é hospedado gratuitamente, então pode ser necessário atualizar a página devido a um servidor lento</h3>
 <br>
 
-<a href="https://victor-spichenkoff.github.io/portfolio/"><strong>Visite aqui</strong></a>
+<a href="https://victor-spichenkoff.github.io/portfolio/auth"><strong>Visite aqui</strong></a>
 
 <p>Site criado para realizar a conexão entre empresas e jovens estudantes</p>
 <p>Recursos:</p>

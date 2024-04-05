@@ -9,6 +9,8 @@ module.exports = (app:any) => {
 
 
     app.get('/profile/:id', app.api.user.getProfile)
+    
+    app.get('/project/view/:id', app.api.project.getFullProject)
 
     //só com autorização
     app.use(app.config.passport.authenticate())
@@ -37,7 +39,7 @@ module.exports = (app:any) => {
 
     app.get('/project/fy/:id', app.api.project.getFy)
     
-    app.get('/project/view/:id', app.api.project.getFullProject)
+    // app.get('/project/view/:id', app.api.project.getFullProject)
     
     app.post('/like', app.api.project.increaseLikes)
 
