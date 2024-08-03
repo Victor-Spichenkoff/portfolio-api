@@ -55,7 +55,7 @@ module.exports = (app:any) => {
         const currentUserId = req.params.id
 
         let page = req.query.page?? 0
-        let limit = 4
+        let limit = page == 0 ? 12 : 4
         try{
             const projects = await prisma.project.findMany({
                 take: limit,
