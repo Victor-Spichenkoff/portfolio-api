@@ -55,6 +55,7 @@ module.exports = (app:any) => {
         const currentUserId = req.params.id
 
         let page = req.query.page?? 0
+        //lida como erro das telas grandes
         let limit = page == 0 ? 12 : 4
         try{
             const projects = await prisma.project.findMany({
@@ -68,20 +69,14 @@ module.exports = (app:any) => {
     
 
             if(projects.length==0) {
-                // //TESTE DE PAGINACAO
-                // return res.send([
-                //     { id: 'null',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}},
-                //     { id: 'null',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}},
-                //     { id: 'null',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}},
-                //     { id: 'null',name:`nhe${vez++}page${page}`, imageUrl:'', likes: '0', link:'', user:{name:'nhe pessoa'}}
-                // ])
 
-                return res.send([
-                    { id: 'null',name:`Infinite Scroll`, imageUrl:imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
-                    { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
-                    { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
-                    { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}}
-                ])
+                //para ter infinito
+                // return res.send([
+                //     { id: 'null',name:`Infinite Scroll`, imageUrl:imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
+                //     { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
+                //     { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}},
+                //     { id: 'null',name:`Infinite Scroll`, imageUrl, likes: '0', link:'', user:{name:'Corredor X'}}
+                // ])
 
                 //NORMAL:
                 return res.send([])
@@ -169,18 +164,18 @@ module.exports = (app:any) => {
 export {}
 
 //FY
-[
-    {
-        "id": "f16ca335-4410-4bf9-b3c2-22eeb3fbe3f8",
-        "name": "Teste Yudi",
-        "description": "<p>Testando em outro user&nbsp;</p><p><strong>Editado:&nbsp;</strong>Emma toma&nbsp;<br></p>",
-        "link": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk0WGZM-RPg1n0ey4p_HRRIp0mR91MfitbXOHKN49f4khCXpvl4O4VZRe6mNtBxVGcVNo&usqp=CAU",
-        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?         q=tbn:ANd9GcQk0WGZM-RPg1n0ey4p_HRRIp0mR91MfitbXOHKN49f4khCXpvl4O4VZRe6mNtBxVGcVNo&usqp=CAU",
-        "likes": 0,
-        "user_id": "5b1f1fbf-9ac2-4906-aed7-b50bdfd79e84",
-        "user": {
-            "name": "Yudi",
-            "contact": "987654322"
-        }
-    }
-]
+// [
+//     {
+//         "id": "f16ca335-4410-4bf9-b3c2-22eeb3fbe3f8",
+//         "name": "Teste Yudi",
+//         "description": "<p>Testando em outro user&nbsp;</p><p><strong>Editado:&nbsp;</strong>Emma toma&nbsp;<br></p>",
+//         "link": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk0WGZM-RPg1n0ey4p_HRRIp0mR91MfitbXOHKN49f4khCXpvl4O4VZRe6mNtBxVGcVNo&usqp=CAU",
+//         "imageUrl": "https://encrypted-tbn0.gstatic.com/images?         q=tbn:ANd9GcQk0WGZM-RPg1n0ey4p_HRRIp0mR91MfitbXOHKN49f4khCXpvl4O4VZRe6mNtBxVGcVNo&usqp=CAU",
+//         "likes": 0,
+//         "user_id": "5b1f1fbf-9ac2-4906-aed7-b50bdfd79e84",
+//         "user": {
+//             "name": "Yudi",
+//             "contact": "987654322"
+//         }
+//     }
+// ]
